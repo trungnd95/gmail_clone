@@ -1,57 +1,27 @@
+import { createMemoryHistory } from 'history';
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import { Route, Router, Routes } from 'react-router-dom';
 import './App.css';
+import Header from "./components/header";
+import InMail from "./components/InMail";
+import MailList from "./components/MailList";
+import Sidebar from "./components/sidebar";
 
 function App() {
+  const history = createMemoryHistory();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <Router location={history.location} navigator={history}>
+      <div className="app">
+        <Header />
+        <div className='app__body'>
+          <Sidebar />
+          <Routes>
+            <Route exact path="mail" element={<InMail />} />
+            <Route exact path="/" element={<MailList />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 }
 
