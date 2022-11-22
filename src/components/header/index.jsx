@@ -1,5 +1,5 @@
-import { AccountCircle, Apps, ArrowDropDown, Notifications, Search } from '@mui/icons-material';
-import { IconButton, Menu } from '@mui/material';
+import { AccountCircle, Apps, ArrowDropDown, Menu, Notifications, Search } from '@mui/icons-material';
+import { IconButton } from '@mui/material';
 import React from 'react';
 import './index.css';
 function Header() {
