@@ -7,7 +7,6 @@ import MailList from "./components/MailList";
 import Sidebar from "./components/sidebar";
 
 function App() {
-  //const history = createMemoryHistory();
   return (
     <BrowserRouter>
       <div className="app">
