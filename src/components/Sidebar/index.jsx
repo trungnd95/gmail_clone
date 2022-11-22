@@ -2,15 +2,19 @@ import { AccessTime, DuoRounded, ExpandMore, Inbox, LabelImportant, NearMe, Note
 import AddIcon from '@mui/icons-material/Add';
 import { Button, IconButton } from '@mui/material';
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { openComposePane } from '../../features/mailSlicer';
 import "./index.css";
 import SidebarOption from "./SidebarOption";
 
-function index() {
+function Sidebar() {
+  const dispatch = useDispatch();
   return (
     <div className="sidebar">
         <Button 
             startIcon={<AddIcon fontSize="large" />}
             className="sidebar__compose" 
+            onClick={() => dispatch(openComposePane())}
         >
             Compose 
         </Button>
@@ -34,4 +38,4 @@ function index() {
   )
 }
 
-export default index
+export default Sidebar

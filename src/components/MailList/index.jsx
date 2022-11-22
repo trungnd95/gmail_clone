@@ -5,7 +5,7 @@ import "./index.css"
 import MailRow from './MailRow'
 import Section from './Section'
 
-function index() {
+function MailList() {
   return (
     <div className="mailList">
         <div className="mailList__settings">
@@ -41,4 +41,4 @@ function index() {
   )
 }
 
-export default index 
+export default MailList 
