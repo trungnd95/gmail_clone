@@ -1,16 +1,26 @@
 import { Close } from '@mui/icons-material';
 import { Button, IconButton } from '@mui/material';
+import { addDoc, collection, Timestamp } from "firebase/firestore";
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { closeComposePane } from '../../features/mailSlicer';
+import { db } from '../../firebase';
 import "./index.css";
 
 function SendMail() {
   const dispatch = useDispatch();
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = (data) => {
-
+  const onSubmit = async (data) => {
+    try {
+      await addDoc(collection(db, "emails"), {
+        ...data, 
+        timestamp: Timestamp.now()
+      })
+      dispatch(closeComposePane());
+    } catch(err) {
+      console.log(err);
+    }
   }
   return (
     <div className="sendMail">
