@@ -1,11 +1,13 @@
 import { ArrowBack, CheckCircle, Delete, Email, Error, ExitToApp, LabelImportant, MoreVert, MoveToInbox, Print, UnfoldMore, WatchLater } from '@mui/icons-material'
 import { IconButton } from '@mui/material'
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import "./index.css"
 
 function InMail() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const selectedMail = useSelector(state => state.mail.selectedMail);
   return (
     <div className="mail">
       <div className="mail__tools">
@@ -28,13 +30,13 @@ function InMail() {
       </div>
       <div className="mail__body">
         <div className="mail__bodyHeader">
-          <h2>Subject</h2>
+          <h2>{selectedMail?.subject}</h2>
           <LabelImportant className="mail__important" />
-          <p>Title</p>
-          <p className="mail__time">10pm</p>
+          <p>{selectedMail?.title}</p>
+          <p className="mail__time">{selectedMail?.time}</p>
         </div>
         <div className="mail__message">
-          <p>This is mail message</p>
+          <p>{selectedMail?.desc}</p>
         </div>
       </div>
     </div>
